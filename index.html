@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD de Tareas</title>
+</head>
+<body>
+    <h1>Mi Gestor de Tareas</h1>
+    
+    <h2>Agregar Nueva Tarea</h2>
+    <form id="formulario-tarea">
+        <input type="text" id="nombre-tarea" placeholder="Escribe una tarea..." required>
+        <button type="submit">Guardar Tarea</button>
+    </form>
+
+    <hr>
+
+    <h2>Lista de Tareas</h2>
+    <ul id="lista-tareas"></ul>
+
+    <script>
+        const formulario = document.getElementById('formulario-tarea');
+        const lista = document.getElementById('lista-tareas');
+
+        formulario.addEventListener('submit', function(evento) {
+            evento.preventDefault(); // Evita que la página recargue
+            
+            const inputTarea = document.getElementById('nombre-tarea');
+            const textoTarea = inputTarea.value;
+            
+            const nuevaTarea = document.createElement('li');
+            nuevaTarea.textContent = textoTarea;
+            lista.appendChild(nuevaTarea);
+            
+            inputTarea.value = '';
+        });
+    </script>
+</body>
+</html>
